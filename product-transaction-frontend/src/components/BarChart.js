@@ -1,6 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid } from "recharts";
 import { fetchBarChart } from "../api";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+  CartesianGrid,
+  ResponsiveContainer,
+} from "recharts";
+import { Typography } from "@mui/material";
 
 const TransactionsBarChart = ({ selectedMonth }) => {
   const [barChartData, setBarChartData] = useState([]);
@@ -12,13 +21,18 @@ const TransactionsBarChart = ({ selectedMonth }) => {
   }, [selectedMonth]);
 
   return (
-    <BarChart width={600} height={300} data={barChartData}>
-      <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="range" />
-      <YAxis />
-      <Tooltip />
-      <Bar dataKey="count" fill="#8884d8" />
-    </BarChart>
+    <div>
+      <Typography variant="h6">Price Range Chart</Typography>
+      <ResponsiveContainer width="100%" height={300}>
+        <BarChart data={barChartData}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="range" />
+          <YAxis />
+          <Tooltip />
+          <Bar dataKey="count" fill="#8884d8" />
+        </BarChart>
+      </ResponsiveContainer>
+    </div>
   );
 };
 
