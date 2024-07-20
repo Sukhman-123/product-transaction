@@ -7,6 +7,7 @@ const productTransactionSchema = new mongoose.Schema({
   dateOfSale: Date,
   category: String,
   sold: Boolean,
+  image: String,
 });
 
 module.exports = mongoose.model(

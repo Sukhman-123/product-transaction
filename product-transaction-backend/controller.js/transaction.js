@@ -28,7 +28,7 @@ const listTransactions = async (req, res) => {
   if (search) {
     const searchRegex = { $regex: search, $options: "i" };
     query.$or = [{ title: searchRegex }, { description: searchRegex }];
-    // Add price condition if search can be a number
+
     const searchNumber = parseFloat(search);
     if (!isNaN(searchNumber)) {
       query.$or.push({ price: searchNumber });
