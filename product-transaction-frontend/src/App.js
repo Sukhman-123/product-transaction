@@ -1,10 +1,25 @@
 import React, { useState } from "react";
-import { Container, Grid, Paper, Typography } from "@mui/material";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { Container, CssBaseline, Box, Typography } from "@mui/material";
 
 import TransactionsTable from "./components/TransactionsTable";
 import Statistics from "./components/Statistics";
 import TransactionsBarChart from "./components/BarChart";
 import MonthSelector from "./components/MonthSelector";
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#1976d2",
+    },
+    secondary: {
+      main: "#dc004e",
+    },
+  },
+  typography: {
+    fontFamily: "'Roboto', sans-serif",
+  },
+});
 
 const App = () => {
   const [selectedMonth, setSelectedMonth] = useState("March");
@@ -12,36 +27,103 @@ const App = () => {
   const [page, setPage] = useState(1);
 
   return (
-    <Container>
-      <Typography variant="h4" gutterBottom>
-        Product Transactions
-      </Typography>
-      <MonthSelector
-        selectedMonth={selectedMonth}
-        onChange={setSelectedMonth}
-      />
-      <Grid container spacing={3} style={{ marginTop: 20 }}>
-        <Grid item xs={12} md={4}>
-          <Paper style={{ padding: 20 }}>
-            <Statistics selectedMonth={selectedMonth} />
-          </Paper>
-        </Grid>
-        <Grid item xs={12} md={8}>
-          <Paper style={{ padding: 20 }}>
-            <TransactionsBarChart selectedMonth={selectedMonth} />
-          </Paper>
-        </Grid>
-      </Grid>
-      <Paper style={{ padding: 20, marginTop: 20 }}>
-        <TransactionsTable
-          selectedMonth={selectedMonth}
-          searchQuery={searchQuery}
-          setSearchQuery={setSearchQuery}
-          page={page}
-          setPage={setPage}
-        />
-      </Paper>
-    </Container>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Box
+        sx={{
+          minHeight: "100vh",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          padding: "20px",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          backgroundColor: "#e0f7fa",
+        }}
+      >
+        <Typography
+          variant="h4"
+          sx={{ marginBottom: "20px", fontWeight: "bold" }}
+        >
+          TRANSACTION DASHBOARD
+        </Typography>
+        <Container
+          maxWidth="md"
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            backgroundColor: "rgba(255, 255, 255, 0.9)",
+            borderRadius: "8px",
+            padding: "20px",
+            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+            marginBottom: "20px",
+          }}
+        >
+          <Box sx={{ flexGrow: 1, marginRight: "20px" }}>
+            <input
+              type="text"
+              placeholder="Search transaction"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              style={{
+                width: "60%",
+                padding: "15px",
+                borderRadius: "4px",
+                border: "1px solid #ccc",
+              }}
+            />
+          </Box>
+          <Box sx={{ flexGrow: 1, marginRight: "20px" }}>
+            <MonthSelector
+              selectedMonth={selectedMonth}
+              onChange={setSelectedMonth}
+            />
+          </Box>
+        </Container>
+        <Container
+          maxWidth="md"
+          sx={{
+            backgroundColor: "rgba(255, 255, 255, 0.9)",
+            borderRadius: "8px",
+            padding: "20px",
+            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+            marginBottom: "20px",
+          }}
+        >
+          <TransactionsTable
+            selectedMonth={selectedMonth}
+            searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery}
+            page={page}
+            setPage={setPage}
+          />
+        </Container>
+        <Container
+          maxWidth="md"
+          sx={{
+            backgroundColor: "rgba(255, 255, 255, 0.9)",
+            borderRadius: "8px",
+            padding: "20px",
+            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+            marginBottom: "20px",
+          }}
+        >
+          <Statistics selectedMonth={selectedMonth} />
+        </Container>
+        <Container
+          maxWidth="md"
+          sx={{
+            backgroundColor: "rgba(255, 255, 255, 0.9)",
+            borderRadius: "8px",
+            padding: "20px",
+            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+          }}
+        >
+          <TransactionsBarChart selectedMonth={selectedMonth} />
+        </Container>
+      </Box>
+    </ThemeProvider>
   );
 };
 

@@ -22,7 +22,12 @@ const TransactionsBarChart = ({ selectedMonth }) => {
 
   return (
     <div>
-      <Typography variant="h6">Price Range Chart</Typography>
+      <Typography
+        variant="h6"
+        sx={{ marginBottom: "20px", fontWeight: "bold" }}
+      >
+        Price Range Chart
+      </Typography>
       <ResponsiveContainer width="100%" height={300}>
         <BarChart data={barChartData}>
           <CartesianGrid strokeDasharray="3 3" />

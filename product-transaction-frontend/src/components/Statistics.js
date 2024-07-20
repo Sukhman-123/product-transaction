@@ -25,7 +25,12 @@ const Statistics = ({ selectedMonth }) => {
 
   return (
     <Box>
-      <Typography variant="h6">Statistics for {selectedMonth}</Typography>
+      <Typography
+        variant="h6"
+        sx={{ marginBottom: "20px", fontWeight: "bold" }}
+      >
+        Statistics for {selectedMonth}
+      </Typography>
       {loading ? (
         <Typography>Loading...</Typography>
       ) : (

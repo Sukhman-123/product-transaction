@@ -8,18 +8,11 @@ import {
   TableHead,
   TableRow,
   Paper,
-  TextField,
   Button,
   CircularProgress,
 } from "@mui/material";
 
-const TransactionsTable = ({
-  selectedMonth,
-  searchQuery,
-  setSearchQuery,
-  page,
-  setPage,
-}) => {
+const TransactionsTable = ({ selectedMonth, searchQuery, page, setPage }) => {
   const [transactions, setTransactions] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -38,46 +31,55 @@ const TransactionsTable = ({
 
   return (
     <div>
-      <TextField
-        label="Search transactions"
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-        fullWidth
-        style={{ marginBottom: 20 }}
-      />
       {loading ? (
         <CircularProgress />
       ) : (
         <TableContainer component={Paper}>
-          <Table>
+          <Table
+            sx={{ minWidth: 650, fontWeight: "bold" }}
+            aria-label="simple table"
+          >
             <TableHead>
               <TableRow>
+                <TableCell>ID</TableCell>
                 <TableCell>Title</TableCell>
                 <TableCell>Description</TableCell>
                 <TableCell>Price</TableCell>
-                <TableCell>Date of Sale</TableCell>
                 <TableCell>Category</TableCell>
                 <TableCell>Sold</TableCell>
+                <TableCell>Image</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {transactions.map((transaction) => (
                 <TableRow key={transaction._id}>
+                  <TableCell>{transaction._id}</TableCell>
                   <TableCell>{transaction.title}</TableCell>
                   <TableCell>{transaction.description}</TableCell>
                   <TableCell>{transaction.price}</TableCell>
-                  <TableCell>
-                    {new Date(transaction.dateOfSale).toLocaleDateString()}
-                  </TableCell>
                   <TableCell>{transaction.category}</TableCell>
                   <TableCell>{transaction.sold ? "Yes" : "No"}</TableCell>
+                  <TableCell>
+                    <img
+                      src={transaction.image}
+                      alt={transaction.title}
+                      style={{ width: "50px", height: "50px" }}
+                    />
+                  </TableCell>{" "}
                 </TableRow>
               ))}
             </TableBody>
           </Table>
         </TableContainer>
       )}
-      <div style={{ marginTop: 20 }}>
+      <div
+        style={{
+          marginTop: 20,
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
         <Button
           variant="contained"
           color="primary"

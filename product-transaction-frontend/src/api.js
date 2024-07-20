@@ -23,18 +23,17 @@ const formatMonth = (month) => {
   return formattedMonth;
 };
 
-export const fetchTransactions = async (
-  month,
-  searchQuery = "",
-  page = 1,
-  perPage = 10
-) => {
+export const fetchTransactions = async (month, search, page) => {
   try {
-    const formattedMonth = formatMonth(month);
     const response = await axios.get(`${BASE_URL}/transactions`, {
-      params: { month: formattedMonth, searchQuery, page, perPage },
+      params: {
+        month,
+        search,
+        page,
+        perPage: 10,
+      },
     });
-    return response;
+    return response.data;
   } catch (error) {
     console.error("Error fetching transactions:", error);
     throw error;
