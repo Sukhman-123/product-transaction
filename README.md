@@ -32,6 +32,7 @@ The Product Transaction Dashboard is a web application designed to track and vis
 - Configure environment variables (create a .env file with MONGO_URI and PORT as variables)
 
 - Start the server: npm start
+  
 
 3. **Set up the frontend:**
 
@@ -40,6 +41,7 @@ The Product Transaction Dashboard is a web application designed to track and vis
 - Install the required dependencies: npm install
 
 - Start the development server: npm start
+  
 
 **API Endpoints:**
 
@@ -52,6 +54,7 @@ Description: Fetches combined data for statistics and charts.
 Query Parameters:
 
 month (optional): The month for which to fetch data. Defaults to 3.
+
 
 /transactions
 
@@ -69,11 +72,14 @@ limit (optional): The number of transactions per page.
 
 search (optional): A search term to filter transactions.
 
+
+
 **Usage:**
 
 Navigate to the frontend application to view and interact with the transaction dashboard.
 
 Use the provided API endpoints to fetch and manipulate transaction data.
+
 
 
 **Contributing:**
