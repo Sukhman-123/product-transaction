@@ -44,35 +44,53 @@ The Product Transaction Dashboard is a web application designed to track and vis
 **API Endpoints:**
 
 /combined-data
+
 Method: GET
+
 Description: Fetches combined data for statistics and charts.
+
 Query Parameters:
+
 month (optional): The month for which to fetch data. Defaults to 3.
 
 /transactions
+
 Method: GET
+
 Description: Retrieves transaction data.
+
 Query Parameters:
+
 month (optional): The month for which to fetch transactions.
+
 page (optional): The page number for pagination.
+
 limit (optional): The number of transactions per page.
+
 search (optional): A search term to filter transactions.
 
 **Usage:**
 
 Navigate to the frontend application to view and interact with the transaction dashboard.
+
 Use the provided API endpoints to fetch and manipulate transaction data.
 
 
 **Contributing:**
 Fork the repository.
+
 Create a new branch (git checkout -b feature/your-feature).
+
 Commit your changes (git commit -am 'Add new feature').
+
 Push to the branch (git push origin feature/your-feature).
+
 Create a new Pull Request.
 
 
 **Acknowledgments:**
+
 The MERN stack for providing a robust framework for building full-stack applications.
+
 Ant Design for the UI components used in the frontend.
 
