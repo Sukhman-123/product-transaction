@@ -43,9 +43,9 @@ The Product Transaction Dashboard is a web application designed to track and vis
 - Start the development server: npm start
   
 
-**API Endpoints:**
+## API Endpoints
 
-/combined-data
+**/combined-data**
 
 Method: GET
 
@@ -56,7 +56,7 @@ Query Parameters:
 month (optional): The month for which to fetch data. Defaults to 3.
 
 
-/transactions
+**/transactions**
 
 Method: GET
 
@@ -74,7 +74,7 @@ search (optional): A search term to filter transactions.
 
 
 
-**Usage:**
+## Usage
 
 Navigate to the frontend application to view and interact with the transaction dashboard.
 
@@ -82,7 +82,7 @@ Use the provided API endpoints to fetch and manipulate transaction data.
 
 
 
-**Contributing:**
+## Contributing
 Fork the repository.
 
 Create a new branch (git checkout -b feature/your-feature).
@@ -94,7 +94,7 @@ Push to the branch (git push origin feature/your-feature).
 Create a new Pull Request.
 
 
-**Acknowledgments:**
+## Acknowledgments
 
 The MERN stack for providing a robust framework for building full-stack applications.
 
